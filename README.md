@@ -16,6 +16,9 @@ A work-in-progress iOS app designed to provide a free-form, intuitive platform t
 - **AI Integration (Future Goal)**  
   The hope is to eventually incorporate AI that can generate the structured mode of any card game given textual rule sets, utilizing mostly classification and possibly generation techniques.
 
+- **Multiplayer Interaction**  
+  Players will be able to call, chat, and spam emojis while playing.
+
 - **Custom Card Game Packages**  
   Players will be able to create and release their own card game packages online (for structured mode), enabling gameplay with friends and others.
 
