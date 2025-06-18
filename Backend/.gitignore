@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Native addon builds
+build/
+Release/
+*.node
+
+# OS junk
+.DS_Store
