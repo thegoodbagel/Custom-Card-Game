@@ -2,23 +2,16 @@
   "targets": [
     {
       "target_name": "addon",
-      "sources": [ "src/binding.cc", "src/GameLogic.cpp" ],
+      "sources": [ "src/binding.cc" ],
       "include_dirs": [
-        "<!(node -p 'require(\"node-addon-api\").include.replace(/\"/g, \"\")')"
+        "<!@(node -p \"require('node-addon-api').include\")"
       ],
       "dependencies": [
         "<!(node -p \"require('node-addon-api').gyp\")"
       ],
-      "cflags_cc!": [ "-fno-exceptions" ],
-      "cflags_cc": [ "-std=c++17" ],
+      "cflags_cc": [ "-fexceptions" ],
       "defines": [ "NAPI_CPP_EXCEPTIONS" ],
-      "conditions": [
-        [ "OS=='mac'", {
-          "xcode_settings": {
-            "MACOSX_DEPLOYMENT_TARGET": "10.15"
-          }
-        }]
-      ]
+      "libraries": []
     }
   ]
 }

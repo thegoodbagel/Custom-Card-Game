@@ -23,7 +23,7 @@ CFLAGS_Debug := \
 	-O0 \
 	-gdwarf-2 \
 	-fno-strict-aliasing \
-	-mmacosx-version-min=10.15 \
+	-mmacosx-version-min=11.0 \
 	-arch \
 	arm64 \
 	-Wall \
@@ -55,7 +55,7 @@ INCS_Debug := \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/uv/include \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/zlib \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/v8/include \
-	-I/Applications/Card Game/Backend/node_modules/node-addon-api
+	-I/Applications/CardGame/Backend/node_modules/node-addon-api
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon' \
@@ -76,7 +76,7 @@ CFLAGS_Release := \
 	-O3 \
 	-gdwarf-2 \
 	-fno-strict-aliasing \
-	-mmacosx-version-min=10.15 \
+	-mmacosx-version-min=11.0 \
 	-arch \
 	arm64 \
 	-Wall \
@@ -108,11 +108,10 @@ INCS_Release := \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/uv/include \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/zlib \
 	-I/Users/thegoodbagel/Library/Caches/node-gyp/22.12.0/deps/v8/include \
-	-I/Applications/Card Game/Backend/node_modules/node-addon-api
+	-I/Applications/CardGame/Backend/node_modules/node-addon-api
 
 OBJS := \
-	$(obj).target/$(TARGET)/src/binding.o \
-	$(obj).target/$(TARGET)/src/GameLogic.o
+	$(obj).target/$(TARGET)/src/binding.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
@@ -130,21 +129,12 @@ $(OBJS): GYP_OBJCXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_
 
 # Suffix rules, putting all outputs into $(obj).
 
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.cpp FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
-
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(srcdir)/%.cc FORCE_DO_CMD
 	@$(call do_cmd,cxx,1)
 
 # Try building from generated source, too.
 
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.cpp FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
-
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj).$(TOOLSET)/%.cc FORCE_DO_CMD
-	@$(call do_cmd,cxx,1)
-
-$(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 	@$(call do_cmd,cxx,1)
 
 $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
@@ -155,7 +145,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.15 \
+	-mmacosx-version-min=11.0 \
 	-arch \
 	arm64 \
 	-L$(builddir) \
@@ -168,7 +158,7 @@ LIBTOOLFLAGS_Debug := \
 LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
-	-mmacosx-version-min=10.15 \
+	-mmacosx-version-min=11.0 \
 	-arch \
 	arm64 \
 	-L$(builddir) \

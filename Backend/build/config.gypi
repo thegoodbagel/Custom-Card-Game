@@ -445,7 +445,7 @@
     "python": "/opt/homebrew/opt/python@3.13/bin/python3.13",
     "standalone_static_library": 1,
     "global_prefix": "/usr/local",
-    "local_prefix": "/Applications/Card Game/Backend",
+    "local_prefix": "/Applications/CardGame/Backend",
     "globalconfig": "/usr/local/etc/npmrc",
     "userconfig": "/Users/thegoodbagel/.npmrc",
     "init_module": "/Users/thegoodbagel/.npm-init.js",
