@@ -7,22 +7,20 @@
 
 import Foundation
 
-protocol Deck {
-    associatedtype CardType: Card
-
-    var cards: [CardType] { get set }
-    var size: Int { get }
-
-    mutating func shuffle()
-    mutating func deal() -> CardType?
-}
-
-extension Deck {
+struct Deck: Codable {
+    var cards: [Card]
+    
+    var size: Int {
+        cards.count
+    }
+    
     mutating func shuffle() {
         cards.shuffle()
     }
-
-    mutating func deal() -> CardType? {
-        return cards.popLast()
+    
+    mutating func deal() -> Card? {
+        cards.popLast()
     }
+    
+    let cardBackImageFile: String
 }

@@ -1,6 +1,16 @@
 {
+  "name": "socket-cpp-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npx node-gyp configure build"
+  },
   "dependencies": {
     "express": "^5.1.0",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "node-gyp": "^11.2.0"
   }
 }

@@ -29,8 +29,8 @@ class SocketService: ObservableObject {
             print("iOS Connected to socket server")
         }
 
-        socket.on("cardPlayed") { data, ack in
-            print("Received cardPlayed:", data)
+        socket.on("move") { data, ack in
+            print("Received move:", data)
             // Handle incoming card event (e.g., update UI)
         }
 
@@ -39,6 +39,7 @@ class SocketService: ObservableObject {
         }
     }
 
+    // Put elsewhere
     func playCard(card: String) {
         socket.emit("playCard", card)
     }

@@ -7,23 +7,23 @@
 
 import Foundation
 
-protocol Card {
-    // Must correspond to image name
-    // Does not need to be unique among cards
-    var id: UUID { get }
-    var value: String { get }
-    var location: CardLocation { get set }
-    var face: CardFaceDirection { get set }
+struct Card: Codable, Identifiable {
+    let id: UUID
+    let value: String
+    var location: CardLocation
+    var face: CardFaceDirection
+    let imageFile: String
 }
 
-enum CardLocation {
+enum CardLocation: String, Codable {
     case hand
     case otherHand
     case table
     case pocket
 }
 
-enum CardFaceDirection{
+enum CardFaceDirection: String, Codable {
     case up
     case down
 }
+

@@ -8,38 +8,25 @@
 import Foundation
 import SwiftUI
 
-struct CardView<CardType: Card>: View {
-    let card: CardType
-    let onSwipeUp: () -> Void
-    let onSwipeDown: () -> Void
+struct CardView: View {
+    let card: Card
 
     var body: some View {
         Group {
-            if card.face == .up {
-                Image(card.value)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                    .shadow(radius: 3)
-            } else {
-                Image("card_back") // Make sure you have a card_back asset in your project
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                    .shadow(radius: 3)
-            }
+            imageForCard(card)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(8)
+                .shadow(radius: 3)
         }
         .frame(width: 60, height: 90) // You can override this in the parent view if you want
-        .gesture(
-            DragGesture(minimumDistance: 20)
-                .onEnded { value in
-                    if value.translation.height < -20 {
-                        onSwipeUp()
-                    } else if value.translation.height > 20 {
-                        onSwipeDown()
-                    }
-                }
-        )
         .accessibilityLabel(Text(card.value))
     }
+}
+
+func imageForCard(_ card: Card) -> Image {
+    if card.face == .down {
+        return Image("card_back")
+    }
+    return Image(card.imageFile)
 }
