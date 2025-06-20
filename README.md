@@ -16,11 +16,9 @@ A work-in-progress iOS app designed to provide a free-form, intuitive platform t
 - **AI Integration (Future Goal)**  
   The plan is to incorporate AI into both game modes:
 
-  - **Free Mode:**  
-    An 'interpretive' AI layer will decode ambiguous, intuitive gestures by analyzing the surrounding context, then update the game state accordingly.
+  - In Free Mode, an 'interpretive' AI layer will decode ambiguous, intuitive gestures by analyzing the surrounding context, then update the game state accordingly.
 
-  - **Structure Mode:**  
-    AI will generate structured gameplay modes for any card game based on textual rule sets, leveraging classification and potentially generation techniques.
+  - In Structure Mode, AI will generate structured gameplay modes for any card game based on textual rule sets, leveraging classification and potentially generation techniques.
     
 - **Multiplayer Interaction**  
   Players will be able to call, chat, and spam emojis while playing.
