@@ -13,9 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Button("Play Card") {
-                socket.playCard(card: "Ace of Spades")
-            }
+            // Stack of cards, face down
         }
         .onAppear {
             print("View appeared, socket is already connecting")

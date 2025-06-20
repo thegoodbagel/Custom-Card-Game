@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		817B95052E03138F00237E67 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B95042E03138F00237E67 /* Card.swift */; };
-		817B95072E03139700237E67 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B95062E03139700237E67 /* Deck.swift */; };
+		81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D502E05F55C0009C0CB /* CardStackView.swift */; };
+		81CF9D532E05F5640009C0CB /* CardHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D522E05F5640009C0CB /* CardHandView.swift */; };
 		81D458082E01C4A100881A8F /* CardGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D458072E01C4A100881A8F /* CardGameApp.swift */; };
 		81D4580C2E01C4A400881A8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D4580B2E01C4A400881A8F /* Assets.xcassets */; };
 		81D458102E01C4A400881A8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D4580F2E01C4A400881A8F /* Preview Assets.xcassets */; };
@@ -28,20 +29,21 @@
 			containerPortal = 81D457FC2E01C4A100881A8F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 81D458032E01C4A100881A8F;
-			remoteInfo = "CardGame";
+			remoteInfo = CardGame;
 		};
 		81D458202E01C4A400881A8F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81D457FC2E01C4A100881A8F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 81D458032E01C4A100881A8F;
-			remoteInfo = "CardGame";
+			remoteInfo = CardGame;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		817B95042E03138F00237E67 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		817B95062E03139700237E67 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		81CF9D502E05F55C0009C0CB /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		81CF9D522E05F5640009C0CB /* CardHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHandView.swift; sourceTree = "<group>"; };
 		81D458042E01C4A100881A8F /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D458072E01C4A100881A8F /* CardGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameApp.swift; sourceTree = "<group>"; };
 		81D4580B2E01C4A400881A8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				817B95042E03138F00237E67 /* Card.swift */,
-				817B95062E03139700237E67 /* Deck.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,7 +132,7 @@
 				817B95032E03138200237E67 /* Models */,
 				81D4580E2E01C4A400881A8F /* Preview Content */,
 			);
-			path = "CardGame";
+			path = CardGame;
 			sourceTree = "<group>";
 		};
 		81D4580E2E01C4A400881A8F /* Preview Content */ = {
@@ -147,7 +148,7 @@
 			children = (
 				81D458192E01C4A400881A8F /* CardGameTests.swift */,
 			);
-			path = "CardGameTests";
+			path = CardGameTests;
 			sourceTree = "<group>";
 		};
 		81D458222E01C4A400881A8F /* CardGameUITests */ = {
@@ -156,7 +157,7 @@
 				81D458232E01C4A400881A8F /* CardGameUITests.swift */,
 				81D458252E01C4A400881A8F /* CardGameUITestsLaunchTests.swift */,
 			);
-			path = "CardGameUITests";
+			path = CardGameUITests;
 			sourceTree = "<group>";
 		};
 		81D458412E01C58200881A8F /* View */ = {
@@ -165,6 +166,8 @@
 				817B95082E03151700237E67 /* Images */,
 				81D458422E01C58A00881A8F /* GameView.swift */,
 				81D4584D2E01C62000881A8F /* CardView.swift */,
+				81CF9D502E05F55C0009C0CB /* CardStackView.swift */,
+				81CF9D522E05F5640009C0CB /* CardHandView.swift */,
 				81D4584F2E01C65D00881A8F /* ContentView.swift */,
 			);
 			path = View;
@@ -197,7 +200,7 @@
 			packageProductDependencies = (
 				81D458522E01CF2500881A8F /* SocketIO */,
 			);
-			productName = "CardGame";
+			productName = CardGame;
 			productReference = 81D458042E01C4A100881A8F /* CardGame.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -215,7 +218,7 @@
 				81D458172E01C4A400881A8F /* PBXTargetDependency */,
 			);
 			name = CardGameTests;
-			productName = "CardGameTests";
+			productName = CardGameTests;
 			productReference = 81D458152E01C4A400881A8F /* CardGameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -233,7 +236,7 @@
 				81D458212E01C4A400881A8F /* PBXTargetDependency */,
 			);
 			name = CardGameUITests;
-			productName = "CardGameUITests";
+			productName = CardGameUITests;
 			productReference = 81D4581F2E01C4A400881A8F /* CardGameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -314,10 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				817B95072E03139700237E67 /* Deck.swift in Sources */,
+				81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */,
 				81D458562E01CF5200881A8F /* SocketManager.swift in Sources */,
 				817B95052E03138F00237E67 /* Card.swift in Sources */,
 				81D458432E01C58A00881A8F /* GameView.swift in Sources */,
+				81CF9D532E05F5640009C0CB /* CardHandView.swift in Sources */,
 				81D458502E01C65D00881A8F /* ContentView.swift in Sources */,
 				81D4584E2E01C62000881A8F /* CardView.swift in Sources */,
 				81D458082E01C4A100881A8F /* CardGameApp.swift in Sources */,
@@ -471,7 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CardGame/CardGame.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CardGame/CardGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CardGame/Preview Content\"";
@@ -509,7 +513,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CardGame/CardGame.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CardGame/CardGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CardGame/Preview Content\"";
@@ -606,7 +610,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "CardGame";
+				TEST_TARGET_NAME = CardGame;
 			};
 			name = Debug;
 		};
@@ -628,7 +632,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "CardGame";
+				TEST_TARGET_NAME = CardGame;
 			};
 			name = Release;
 		};

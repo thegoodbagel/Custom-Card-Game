@@ -6,32 +6,26 @@
 //
 
 import Foundation
+import SwiftUI
 
-// Filter game state to information relative to display
-class GameView<DeckType: Deck>: ObservableObject {
-    @Published var deck: DeckType
-    @Published var cards: [DeckType.CardType]
 
-    init(deck: DeckType) {
-        self.deck = deck
-        self.cards = deck.cards
-    }
+struct GameView: View {
+    @State var drawPile: [Card]
+    @State var hand: [Card]
+    
+    var body: some View {
+        VStack {
+            Spacer()
 
-    func move(card: DeckType.CardType, to location: CardLocation) {
-        if let index = cards.firstIndex(where: { $0.id == card.id }) {
-            cards[index].location = location
+            CardStackView(cards: drawPile)
+                .frame(maxHeight: .infinity)
+
+            Spacer()
+
+            CardHandView(cards: hand)
+                .padding(.bottom)
         }
-    }
-
-    var myHand: [DeckType.CardType] {
-        cards.filter { $0.location == .hand }
-    }
-
-    var table: [DeckType.CardType] {
-        cards.filter { $0.location == .table }
-    }
-
-    var pocket: [DeckType.CardType] {
-        cards.filter { $0.location == .pocket }
+        .padding()
+        .background(Color.green.opacity(0.2))
     }
 }
