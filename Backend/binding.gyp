@@ -10,8 +10,7 @@
         "<!(node -p \"require('node-addon-api').gyp\")"
       ],
       "cflags_cc": [ "-fexceptions" ],
-      "defines": [ "NAPI_CPP_EXCEPTIONS" ],
-      "libraries": []
+      "defines": [ "NAPI_DISABLE_CPP_EXCEPTIONS=0" ]
     }
   ]
 }

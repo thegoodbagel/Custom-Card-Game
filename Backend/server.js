@@ -12,9 +12,9 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
 
-  socket.on("move", (data) => {
-    console.log("move:", data);
-    socket.broadcast.emit("move", data);
+  socket.on("drawCard", (data) => {
+    console.log(`Player ${socket.id} drawing a card:`, data);
+    socket.broadcast.emit("drawCard", data);
   });
 
   socket.on("disconnect", () => {
