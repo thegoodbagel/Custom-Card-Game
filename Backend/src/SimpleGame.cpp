@@ -6,12 +6,12 @@ std::string SimpleGame::getState() {
     // TODO
 }
 
-void SimpleGame::drawCard(std::string playerID, Card card) {
+Card SimpleGame::drawCard(std::string playerID) {
     Player player = *players[playerID];
+    Card card = drawPile.back();
     drawPile.pop_back();
-
-    // Add the card to the player's hand
     player.addCardToHand(card);
+    return card;
 }
 
 void SimpleGame::addPlayer(std::string playerID) {

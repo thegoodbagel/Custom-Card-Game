@@ -21,5 +21,9 @@ struct CardStackView: View {
         }
         .frame(width: 70, height: 100)
         .accessibilityLabel(Text("Draw pile with \(cards.count) cards"))
+        .onTapGesture {
+            SocketService.shared.drawCard()
+        }
     }
+    
 }
