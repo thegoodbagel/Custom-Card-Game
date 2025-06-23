@@ -29,32 +29,32 @@ class SocketService: ObservableObject {
             print("iOS Connected to socket server")
         }
         
-        socket.on("drawCard") { [weak self] data, ack in
+        socket.on("getState") { [weak self] data, ack in
             guard
                 let payload = data.first as? [String: Any],
-                let cardDict = payload["card"] as? [String: Any],
-                let jsonData = try? JSONSerialization.data(withJSONObject: cardDict),
-                let card = try? JSONDecoder().decode(Card.self, from: jsonData)
+                let jsonData = try? JSONSerialization.data(withJSONObject: payload),
+                let gameState = try? JSONDecoder().decode(GameState.self, from: jsonData)
             else {
-                print("Failed to decode card from server")
+                print("Failed to decode game state from server")
                 return
             }
 
             DispatchQueue.main.async {
-                self?.handleCardDrawn(card)
+                self?.handleGameState(gameState)
             }
         }
+
         
         socket.on(clientEvent: .disconnect) { data, ack in
             print("iOS Disconnected")
         }
     }
     
-    func drawCard() {
-        socket.emit("drawCard", ["playerID": socket.sid]) // or your player ID if stored separately
+    func getState() {
+        socket.emit("getState", [:]) // or playerID if needed
     }
 
-    func handleCardDrawn(_ card: Card) {
-        // TODO: Update GameView or shared state accordingly
+    func handleGameState(_ state: GameState) {
+        // Update your app UI, ViewModel, or shared state
     }
 }

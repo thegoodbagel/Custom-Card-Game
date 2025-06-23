@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		817B95052E03138F00237E67 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B95042E03138F00237E67 /* Card.swift */; };
+		817B95052E03138F00237E67 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B95042E03138F00237E67 /* Models.swift */; };
 		81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D502E05F55C0009C0CB /* CardStackView.swift */; };
 		81CF9D532E05F5640009C0CB /* CardHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D522E05F5640009C0CB /* CardHandView.swift */; };
 		81D458082E01C4A100881A8F /* CardGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D458072E01C4A100881A8F /* CardGameApp.swift */; };
@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		817B95042E03138F00237E67 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		817B95042E03138F00237E67 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		81CF9D502E05F55C0009C0CB /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		81CF9D522E05F5640009C0CB /* CardHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHandView.swift; sourceTree = "<group>"; };
 		81D458042E01C4A100881A8F /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,14 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		817B95032E03138200237E67 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				817B95042E03138F00237E67 /* Card.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		817B95082E03151700237E67 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,8 +120,8 @@
 				81D4580D2E01C4A400881A8F /* CardGame.entitlements */,
 				81D4580B2E01C4A400881A8F /* Assets.xcassets */,
 				81D458542E01CF4600881A8F /* Networking */,
+				817B95042E03138F00237E67 /* Models.swift */,
 				81D458412E01C58200881A8F /* View */,
-				817B95032E03138200237E67 /* Models */,
 				81D4580E2E01C4A400881A8F /* Preview Content */,
 			);
 			path = CardGame;
@@ -319,7 +311,7 @@
 			files = (
 				81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */,
 				81D458562E01CF5200881A8F /* SocketManager.swift in Sources */,
-				817B95052E03138F00237E67 /* Card.swift in Sources */,
+				817B95052E03138F00237E67 /* Models.swift in Sources */,
 				81D458432E01C58A00881A8F /* GameView.swift in Sources */,
 				81CF9D532E05F5640009C0CB /* CardHandView.swift in Sources */,
 				81D458502E01C65D00881A8F /* ContentView.swift in Sources */,
