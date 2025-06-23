@@ -25,8 +25,5 @@ struct CardView: View {
 }
 
 func imageForCard(_ card: Card) -> Image {
-    if card.face == .down {
-        return Image("card_back")
-    }
-    return Image(card.imageFile)
+    return Image(card.value)
 }

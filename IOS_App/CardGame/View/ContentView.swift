@@ -9,15 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    var socket = SocketService.shared
-
     var body: some View {
-        VStack {
-            // Stack of cards, face down
-        }
-        .onAppear {
-            print("View appeared, socket is already connecting")
-        }
+        GameView()
     }
 }
 

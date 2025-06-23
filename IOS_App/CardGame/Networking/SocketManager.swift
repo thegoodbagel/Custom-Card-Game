@@ -11,6 +11,8 @@ import SocketIO
 class SocketService: ObservableObject {
     static let shared = SocketService()
     
+    @Published var state: GameState? = nil
+    
     private var manager: SocketManager
     private var socket: SocketIOClient
     
@@ -25,8 +27,9 @@ class SocketService: ObservableObject {
     }
     
     private func setupHandlers() {
-        socket.on(clientEvent: .connect) { data, ack in
+        socket.on(clientEvent: .connect) { [weak self] data, ack in
             print("iOS Connected to socket server")
+            print("Socket ID:", self?.socket.sid ?? "unknown")
         }
         
         socket.on("getState") { [weak self] data, ack in
@@ -43,6 +46,22 @@ class SocketService: ObservableObject {
                 self?.handleGameState(gameState)
             }
         }
+        
+        socket.on("drawCard") { [weak self] data, ack in
+            guard
+                let payload = data.first as? [String: Any],
+                let cardDict = payload["card"] as? [String: Any],
+                let jsonData = try? JSONSerialization.data(withJSONObject: cardDict),
+                let card = try? JSONDecoder().decode(Card.self, from: jsonData)
+            else {
+                print("Failed to decode card from server")
+                return
+            }
+
+            DispatchQueue.main.async {
+                self?.handleCardDrawn(card)
+            }
+        }
 
         
         socket.on(clientEvent: .disconnect) { data, ack in
@@ -53,8 +72,16 @@ class SocketService: ObservableObject {
     func getState() {
         socket.emit("getState", [:]) // or playerID if needed
     }
+    
+    func drawCard() {
+        socket.emit("drawCard", [:])
+    }
+    
+    func handleCardDrawn(_ card: Card) {
+         getState() // pull latest state instead of modifying hand manually
+    }
 
     func handleGameState(_ state: GameState) {
-        // Update your app UI, ViewModel, or shared state
+        self.state = state
     }
 }
