@@ -12,17 +12,17 @@ const addon = require("./build/Release/addon");
 
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
-  addon.addPlayer(socket.id);
+  const game = new addon.newGame();
 
   socket.on("drawCard", (data) => {
     console.log(`Player ${socket.id} drawing a card`);
-    const result = addon.drawCard(socket.id);
+    const result = game.drawCard(socket.id);
     io.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
   });
 
   socket.on("getState", (data) => {
     console.log(`Getting game stack from perspective of ${socket.id}`);
-    const result = addon.getState(socket.id);
+    const result = game.getState(socket.id);
     socket.emit("getState", JSON.parse(result));
   });
 

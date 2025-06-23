@@ -1,9 +1,9 @@
 #include "SimpleGame.h"
 #include <../nlohmann/json.hpp>
+#include "Standard52Deck.h"
 
-SimpleGame::SimpleGame(DeckType deck) {
-    this-> deck = deck;
-    this-> drawPile = std::vector<Card>(deck.fullDeck);
+SimpleGame::SimpleGame() {
+    this->drawPile = Standard52Deck::getFullDeck();
     this-> players = std::unordered_map<std::string, std::unique_ptr<Player>>();
 }
 
