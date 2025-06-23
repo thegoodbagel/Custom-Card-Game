@@ -5,7 +5,8 @@ SimpleGame game;
 
 Napi::String GetState(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    return Napi::String::New(env, game.getState());
+    std::string playerId = info[0].As<Napi::String>();
+    return Napi::String::New(env, game.getState(playerId));
 }
 
 Napi::Value drawCard(const Napi::CallbackInfo& info) {

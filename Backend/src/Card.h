@@ -1,5 +1,6 @@
 #ifndef CARD_H
 #define CARD_H
+#include <../nlohmann/json.hpp>
 
 #include <string>
 
@@ -18,5 +19,13 @@ enum CardLocation {
 enum CardFaceDirection {
     up, down
 };
+
+using json = nlohmann::json;
+
+void to_json(json& j, const Card& card) {
+    j = json{
+        {"value", card.value}
+    };
+}
 
 #endif

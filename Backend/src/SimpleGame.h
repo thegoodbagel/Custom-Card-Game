@@ -8,8 +8,8 @@
 class SimpleGame {
     public:
         DeckType deck;
-        SimpleGame();
-        std::string getState();
+        SimpleGame(DeckType deck);
+        std::string getState(std::string playerID);
         Card drawCard(std::string playerID);
         void addPlayer(std::string playerID);
     private:

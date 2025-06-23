@@ -1,7 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <SimpleGame.h>
 #include <Card.h>
 
 class Player {
@@ -11,9 +10,10 @@ class Player {
         std::string getID();
         void addCardToHand(Card card);
         void removeCardFromHand(Card card);
+        std::vector<Card> getHand() const { return hand; }
+        int getHandSize() const { return hand.size(); }
         
     private:
-        SimpleGame game;
         std::string id;
         std::string name;
         std::vector<Card> hand; 
