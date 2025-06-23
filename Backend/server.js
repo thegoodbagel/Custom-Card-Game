@@ -9,25 +9,34 @@ const io = new Server(server, {
   cors: { origin: "*" }, // allow your iOS app to connect during development
 });
 const addon = require("./build/Release/addon");
+const games = new Map();
 
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
-  const game = new addon.newGame();
 
-  socket.on("drawCard", (data) => {
-    console.log(`Player ${socket.id} drawing a card`);
-    const result = game.drawCard(socket.id);
-    io.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
+  const game = new addon.newGame();
+  game.addPlayer(socket.id); // Add player to game
+  games.set(socket.id, game);
+
+  socket.on("drawCard", () => {
+    const game = games.get(socket.id);
+    if (!game) return;
+
+    const result = game.drawCard(socket.id); // returns JSON string
+    socket.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
   });
 
-  socket.on("getState", (data) => {
-    console.log(`Getting game stack from perspective of ${socket.id}`);
-    const result = game.getState(socket.id);
+  socket.on("getState", () => {
+    const game = games.get(socket.id);
+    if (!game) return;
+
+    const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));
   });
 
   socket.on("disconnect", () => {
-    console.log(`Player ${socket.id} disconnected:`, socket.id);
+    console.log(`Player ${socket.id} disconnected`);
+    games.delete(socket.id);
   });
 });
 
