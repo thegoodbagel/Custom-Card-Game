@@ -16,9 +16,14 @@ io.on("connection", (socket) => {
 
   socket.on("drawCard", (data) => {
     console.log(`Player ${socket.id} drawing a card`);
+    const result = addon.drawCard(socket.id);
+    io.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
+  });
 
-    const result = addon.drawCard(socket.id); // call C++ logic, return card drawn
-    io.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) }); // broadcast result
+  socket.on("getState", (data) => {
+    console.log(`Getting game stack from perspective of ${socket.id}`);
+    const result = addon.getState(socket.id);
+    socket.emit("getState", JSON.parse(result));
   });
 
   socket.on("disconnect", () => {
