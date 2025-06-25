@@ -2,7 +2,11 @@
   "targets": [
     {
       "target_name": "addon",
-      "sources": [ "src/binding.cpp" ],
+      "sources": [
+        "src/binding.cpp",
+        "src/SimpleGame.cpp",
+        "src/Player.cpp",
+      ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")"
       ],
