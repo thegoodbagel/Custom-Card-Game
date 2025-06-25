@@ -17,8 +17,7 @@ class SocketService: ObservableObject {
     private var socket: SocketIOClient
     
     private init() {
-        // ⚠️ Replace with your actual IP address or hostname when testing on device
-        let url = URL(string: "http://localhost:3000")!
+        let url = URL(string: "http://127.0.0.1:3000")!
         manager = SocketManager(socketURL: url, config: [.log(true), .compress])
         socket = manager.defaultSocket
         
