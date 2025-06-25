@@ -2,7 +2,8 @@
 #define SIMPLE_GAME_H
 
 #include <unordered_set>
-#include <Player.h>
+#include "Player.h"
+#include "Standard52Deck.h"
 
 class SimpleGame {
     public:

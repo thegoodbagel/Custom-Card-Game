@@ -1,6 +1,7 @@
 #include <napi.h>
 #include "SimpleGame.h"
 
+
 class GameWrapper : public Napi::ObjectWrap<GameWrapper> {
 public:
     static Napi::Object Init(Napi::Env env, Napi::Object exports);

@@ -1,5 +1,5 @@
 #include "SimpleGame.h"
-#include <../nlohmann/json.hpp>
+#include "../nlohmann/json.hpp"
 #include "Standard52Deck.h"
 
 SimpleGame::SimpleGame() {
