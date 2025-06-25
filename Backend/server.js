@@ -6,7 +6,10 @@ const { Server } = require("socket.io");
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "*" }, // allow your iOS app to connect during development
+  cors: {
+    origin: ["http://localhost:3000", "http://192.168.0.10:3000"], // Your Mac's IP
+    methods: ["GET", "POST"],
+  },
 });
 const addon = require("./build/Release/addon");
 const games = new Map();

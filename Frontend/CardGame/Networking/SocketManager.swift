@@ -17,7 +17,7 @@ class SocketService: ObservableObject {
     private var socket: SocketIOClient
     
     private init() {
-        let url = URL(string: "http://127.0.0.1:3000")!
+        let url = URL(string: "http://192.168.0.10:3000")!
         manager = SocketManager(socketURL: url, config: [.log(true), .compress])
         socket = manager.defaultSocket
         
