@@ -1,6 +1,6 @@
 #ifndef CARD_H
 #define CARD_H
-#include <../nlohmann/json.hpp>
+#include "../nlohmann/json.hpp"
 
 #include <string>
 

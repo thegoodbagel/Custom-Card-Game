@@ -1,7 +1,7 @@
 #ifndef STANDARD52DECK_H
 #define STANDARD52DECK_H
 
-#include <Card.h>
+#include "Card.h"
 #include <string>
 
 struct Standard52Deck {
