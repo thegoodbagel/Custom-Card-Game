@@ -12,12 +12,14 @@ class SocketService: ObservableObject {
     static let shared = SocketService()
     
     @Published var state: GameState? = nil
+    @Published var isConnected: Bool = false
     
     private var manager: SocketManager
     private var socket: SocketIOClient
     
     private init() {
-        let url = URL(string: "http://192.168.0.10:3000")!
+        
+        let url = URL(string: "http://172.16.156.165:3000")!
         manager = SocketManager(socketURL: url, config: [.log(true), .compress])
         socket = manager.defaultSocket
         
@@ -29,6 +31,9 @@ class SocketService: ObservableObject {
         socket.on(clientEvent: .connect) { [weak self] data, ack in
             print("iOS Connected to socket server")
             print("Socket ID:", self?.socket.sid ?? "unknown")
+            DispatchQueue.main.async {
+                self?.isConnected = true
+            }
         }
         
         socket.on("getState") { [weak self] data, ack in
@@ -46,21 +51,21 @@ class SocketService: ObservableObject {
             }
         }
         
-        socket.on("drawCard") { [weak self] data, ack in
-            guard
-                let payload = data.first as? [String: Any],
-                let cardDict = payload["card"] as? [String: Any],
-                let jsonData = try? JSONSerialization.data(withJSONObject: cardDict),
-                let card = try? JSONDecoder().decode(Card.self, from: jsonData)
-            else {
-                print("Failed to decode card from server")
-                return
-            }
-
-            DispatchQueue.main.async {
-                self?.handleCardDrawn(card)
-            }
-        }
+//        socket.on("drawCard") { [weak self] data, ack in
+//            guard
+//                let payload = data.first as? [String: Any],
+//                let cardDict = payload["card"] as? [String: Any],
+//                let jsonData = try? JSONSerialization.data(withJSONObject: cardDict),
+//                let card = try? JSONDecoder().decode(Card.self, from: jsonData)
+//            else {
+//                print("Failed to decode card from server")
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                self?.handleCardDrawn(card)
+//            }
+//        }
 
         
         socket.on(clientEvent: .disconnect) { data, ack in
@@ -69,16 +74,24 @@ class SocketService: ObservableObject {
     }
     
     func getState() {
+        guard isConnected else {
+            print("Socket not connected — getState aborted")
+            return
+        }
         socket.emit("getState", [:]) // or playerID if needed
     }
     
-    func drawCard() {
-        socket.emit("drawCard", [:])
-    }
-    
-    func handleCardDrawn(_ card: Card) {
-         getState() // pull latest state instead of modifying hand manually
-    }
+//    func drawCard() {
+//        guard isConnected else {
+//            print("Socket not connected — drawCard aborted")
+//            return
+//        }
+//        socket.emit("drawCard", [:])
+//    }
+//
+//    func handleCardDrawn(_ card: Card) {
+//         getState() // pull latest state instead of modifying hand manually
+//    }
 
     func handleGameState(_ state: GameState) {
         self.state = state

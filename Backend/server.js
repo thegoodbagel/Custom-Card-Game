@@ -21,13 +21,13 @@ io.on("connection", (socket) => {
   game.addPlayer(socket.id); // Add player to game
   games.set(socket.id, game);
 
-  socket.on("drawCard", () => {
-    const game = games.get(socket.id);
-    if (!game) return;
+  // socket.on("drawCard", () => {
+  //   const game = games.get(socket.id);
+  //   if (!game) return;
 
-    const result = game.drawCard(socket.id); // returns JSON string
-    socket.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
-  });
+  //   const result = game.drawCard(socket.id); // returns JSON string
+  //   socket.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
+  // });
 
   socket.on("getState", () => {
     const game = games.get(socket.id);
@@ -43,6 +43,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+server.listen(3000, "0.0.0.0", () => {
+  console.log("Server running on http://0.0.0.0:3000");
 });

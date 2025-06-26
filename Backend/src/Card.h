@@ -13,16 +13,19 @@ enum CardFaceDirection {
 };
 
 struct Card {
-    int id;
+    std::string id;
     std::string value;
     CardLocation location;
     CardFaceDirection face;
     std::string playerID;
+    bool operator==(const Card& other) const {
+        return id == other.id;
+    }
 };
 
 using json = nlohmann::json;
 
-void to_json(json& j, const Card& card) {
+inline void to_json(json& j, const Card& card) {
     j = json{
         {"value", card.value}
     };

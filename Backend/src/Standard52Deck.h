@@ -1,6 +1,5 @@
 #ifndef STANDARD52DECK_H
 #define STANDARD52DECK_H
-
 #include "Card.h"
 #include <string>
 
@@ -11,7 +10,7 @@ struct Standard52Deck {
     static std::vector<Card> getFullDeck();
 };
 
-std::vector<Card> Standard52Deck::getFullDeck() {
+inline std::vector<Card> Standard52Deck::getFullDeck() {
     std::vector<Card> fullDeck;
     for (int i = 0; i < 52; ++i) {
         Card card;
