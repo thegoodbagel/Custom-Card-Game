@@ -11,7 +11,7 @@ class Player {
         void addCardToHand(Card card);
         void removeCardFromHand(Card card);
         // Return copy of hand
-        std::vector<Card> getHand() const { return hand; }
+        const std::vector<Card>& getHand() const { return hand; }
         int getHandSize() const { return hand.size(); }
         
     private:

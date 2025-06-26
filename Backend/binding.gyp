@@ -3,7 +3,7 @@
     {
       "target_name": "addon",
       "sources": [
-        "src/binding.cpp",
+        "src/GameWrapper.cpp",
         "src/SimpleGame.cpp",
         "src/Player.cpp",
       ],

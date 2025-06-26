@@ -5,7 +5,7 @@ Napi::Object GameWrapper::Init(Napi::Env env, Napi::Object exports) {
     Napi::Function func = DefineClass(env, "newGame", {
         // Links C++ methods to JS methods
         InstanceMethod("getState", &GameWrapper::GetState),
-        InstanceMethod("drawCard", &GameWrapper::DrawCard),
+        // InstanceMethod("drawCard", &GameWrapper::DrawCard),
         InstanceMethod("addPlayer", &GameWrapper::AddPlayer)
     });
     // JS constructor for the GameWrapper class
