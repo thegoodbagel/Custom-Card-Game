@@ -12,14 +12,13 @@ const io = new Server(server, {
   },
 });
 const addon = require("./build/Release/addon");
-const games = new Map();
+// For now, only have one game
+// const games = new Map();
+const game = new addon.newGame();
 
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
-
-  const game = new addon.newGame();
-  game.addPlayer(socket.id); // Add player to game
-  games.set(socket.id, game);
+  game.addPlayer(socket.id);
 
   // socket.on("drawCard", () => {
   //   const game = games.get(socket.id);
@@ -30,7 +29,6 @@ io.on("connection", (socket) => {
   // });
 
   socket.on("getState", () => {
-    const game = games.get(socket.id);
     if (!game) return;
 
     const result = game.getState(socket.id); // returns JSON string
@@ -39,7 +37,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(`Player ${socket.id} disconnected`);
-    games.delete(socket.id);
+    // TODO: Remove player from game
   });
 });
 

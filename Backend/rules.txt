@@ -1,0 +1,10 @@
+Notepad for jotting down invariants and stuff:
+
+API ENDPOINTS:
+-> name MUST be the same as the binding name
+
+
+- addPlayer
+
+
+- getState

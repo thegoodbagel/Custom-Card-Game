@@ -10,6 +10,7 @@ class Player {
         std::string getID();
         void addCardToHand(Card card);
         void removeCardFromHand(Card card);
+        // Return copy of hand
         std::vector<Card> getHand() const { return hand; }
         int getHandSize() const { return hand.size(); }
         
