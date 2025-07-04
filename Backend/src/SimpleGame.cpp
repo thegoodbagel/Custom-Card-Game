@@ -1,6 +1,7 @@
 #include "SimpleGame.h"
 #include "../nlohmann/json.hpp"
 #include "Standard52Deck.h"
+#include <iostream> // For debugging
 
 SimpleGame::SimpleGame() {
     this->drawPile = Standard52Deck::getFullDeck();
@@ -35,6 +36,7 @@ std::string SimpleGame::getState(std::string playerID) {
 
     // Add own hand
     state["hand"] = players[playerID]->getHand();
+    std::cout << "Getting hand of player " << playerID << std::endl;
 
     // Other players: only hand sizes
     nlohmann::json others;
@@ -52,10 +54,10 @@ std::string SimpleGame::getState(std::string playerID) {
 }
 
 Card SimpleGame::drawCard(std::string playerID) {
-    Player player = *players[playerID];
+    Player& player = *players[playerID];
     Card card = drawPile.back();
     drawPile.pop_back();
-    player.addCardToHand(card);
+    player.addCardToHand(card); 
     return card;
 }
 

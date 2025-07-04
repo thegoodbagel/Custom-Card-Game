@@ -19,18 +19,19 @@ const game = new addon.newGame();
 io.on("connection", (socket) => {
   console.log("New client connected:", socket.id);
   game.addPlayer(socket.id);
+  const result = game.getState(socket.id); // returns JSON string
+  socket.emit("getState", JSON.parse(result));
 
-  // socket.on("drawCard", () => {
-  //   const game = games.get(socket.id);
-  //   if (!game) return;
-
-  //   const result = game.drawCard(socket.id); // returns JSON string
-  //   socket.emit("drawCard", { playerID: socket.id, card: JSON.parse(result) });
-  // });
+  socket.on("drawCard", () => {
+    const cardDrawn = game.drawCard(socket.id); // returns JSON string
+    console.log(`Player ${socket.id} drew a card:`, cardDrawn);
+    const result = game.getState(socket.id); // returns JSON string
+    socket.emit("getState", JSON.parse(result));
+    console.log(result);
+  });
 
   socket.on("getState", () => {
-    if (!game) return;
-
+    console.log("State requested from player:", socket.id);
     const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));
   });

@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var model = GameViewModel()
+    @StateObject var model = Game()
 
     var body: some View {
         VStack {
             Spacer()
 
             // Draw pile (face-down cards)
-            CardStackView(cards: model.drawPile)
-                .frame(maxHeight: .infinity)
+            CardStackView(count: model.state?.drawPileSize ?? 0)
 
             Spacer()
 
             Button(action: {
                 model.drawCard()
+                print("Draw Card Button pressed")
             }) {
                 Text("Draw Card")
                     .padding()
@@ -33,7 +33,7 @@ struct GameView: View {
 
             Spacer()
 
-            CardHandView(cards: model.hand)
+            CardHandView(cards: model.state?.hand ?? [])
                 .padding(.bottom)
         }
         .padding()

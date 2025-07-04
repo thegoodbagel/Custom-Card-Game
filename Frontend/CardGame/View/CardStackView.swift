@@ -9,21 +9,16 @@ import Foundation
 import SwiftUI
 
 struct CardStackView: View {
-    let cards: [Card]
+    let count: Int
 
     var body: some View {
         ZStack {
-            ForEach(cards.indices, id: \.self) { index in
-                CardView(card: cards[index])
-                    .offset(x: CGFloat(index) * 0.5, y: CGFloat(index) * -2) // subtle displacement
-                    .zIndex(Double(index))
+            ForEach(0..<count, id: \.self) { index in
+                CardBackView()
+                    .offset(x: CGFloat(index) * 0.5, y: CGFloat(index) * 0.5)
+                    .zIndex(Double(index)) // optional, to control stacking order
             }
         }
-        .frame(width: 70, height: 100)
-        .accessibilityLabel(Text("Draw pile with \(cards.count) cards"))
-        .onTapGesture {
-            SocketService.shared.drawCard()
-        }
+        .frame(width: 60 + CGFloat(count) * 0.5, height: 90 + CGFloat(count) * 0.5)
     }
-    
 }
