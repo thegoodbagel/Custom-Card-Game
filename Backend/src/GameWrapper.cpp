@@ -33,13 +33,11 @@ Napi::Value GameWrapper::GetState(const Napi::CallbackInfo& info) {
 }
 
 void GameWrapper::DrawCard(const Napi::CallbackInfo& info) {
-    Napi::Env env = info.Env();
     std::string playerId = info[0].As<Napi::String>();
     game.drawCard(playerId);
 }
 
 void GameWrapper::PlayCard(const Napi::CallbackInfo& info) {
-    Napi::Env env = info.Env();
     std::string playerId = info[0].As<Napi::String>();
     std::string cardId = info[1].As<Napi::String>();
     game.playCard(playerId, cardId);

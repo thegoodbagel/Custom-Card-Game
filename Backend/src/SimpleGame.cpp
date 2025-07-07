@@ -45,7 +45,6 @@ Card SimpleGame::drawCard(std::string playerID) {
     return card;
 }
 
-
 void SimpleGame::playCard(std::string playerID, std::string cardID) {
     Player& player = *players[playerID];
     auto& hand = player.getHand();

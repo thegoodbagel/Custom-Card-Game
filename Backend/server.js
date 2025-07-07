@@ -23,15 +23,15 @@ io.on("connection", (socket) => {
   socket.emit("getState", JSON.parse(result));
 
   socket.on("drawCard", () => {
-    game.drawCard(socket.id); // returns JSON string
+    game.drawCard(socket.id);
     console.log(`Player ${socket.id} drew a card`);
     const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));
     console.log(result);
   });
 
-  socket.on("playCard", () => {
-    game.playCard(socket.id); // returns JSON string
+  socket.on("playCard", (cardID) => {
+    game.playCard(socket.id, cardID);
     console.log(`Player ${socket.id} played a card`);
     const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));

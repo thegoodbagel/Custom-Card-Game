@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 struct CardHandView: View {
     let cards: [Card]
-//    var onCardTap: ((Card) -> Void)? = nil
+    var onCardTap: ((Card) -> Void)? = nil
 
     var body: some View {
         GeometryReader { geometry in
-            HandLayout(cards: cards, maxWidth: geometry.size.width /*, onCardTap: onCardTap*/)
+            HandLayout(cards: cards, maxWidth: geometry.size.width, onCardTap: onCardTap)
         }
         .frame(height: 200)
     }
@@ -22,7 +22,7 @@ struct CardHandView: View {
 struct HandLayout: View {
     let cards: [Card]
     let maxWidth: CGFloat
-//    var onCardTap: ((Card) -> Void)? = nil
+    var onCardTap: ((Card) -> Void)? = nil
 
     var body: some View {
         let maxPerRow = max(Int(maxWidth / 50), 1)
@@ -33,9 +33,9 @@ struct HandLayout: View {
                 HStack(spacing: -20) {
                     ForEach(splitRows[rowIndex]) { card in
                         CardView(card: card)
-//                            .onTapGesture {
-//                                onCardTap?(card)
-//                            }
+                            .onTapGesture {
+                                onCardTap?(card)
+                            }
                     }
                 }
             }

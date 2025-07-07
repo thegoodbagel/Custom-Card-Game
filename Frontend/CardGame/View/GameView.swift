@@ -47,11 +47,11 @@ struct GameView: View {
             
             Spacer()
             
-            CardHandView(cards: model.state?.hand ?? []) /*/{ card in
+            CardHandView(cards: model.state?.hand ?? []) { card in
                 withAnimation(.easeInOut(duration: 0.4)) {
                     model.playCard(card)
                 }
-            }*/
+            }
         }
         .padding()
         .background(Color.green.opacity(0.2))
