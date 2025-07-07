@@ -13,26 +13,40 @@ struct GameView: View {
     var body: some View {
         VStack {
             Spacer()
-
-            // Draw pile (face-down cards)
-            CardStackView(count: model.state?.drawPileSize ?? 0)
-
-            Spacer()
-
-            Button(action: {
-                model.drawCard()
-                print("Draw Card Button pressed")
-            }) {
-                Text("Draw Card")
+            
+            HStack{
+                Spacer()
+                
+                VStack{
+                                        
+                    // Draw pile (face-down cards)
+                    CardStackView(count: model.state?.drawPileSize ?? 0)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        model.drawCard()
+                        print("Draw Card Button pressed")
+                    }) {
+                        Text("Draw Card")
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                }
+                
+                Spacer()
+                
+                // Play pile (face-up cards)
+                CardPileView(cards: model.state?.playPile ?? [])
+                
+                Spacer()
             }
-            .padding()
-
+            
             Spacer()
-
+            
             CardHandView(cards: model.state?.hand ?? [])
                 .padding(.bottom)
         }

@@ -11,6 +11,7 @@ struct GameState: Codable {
     let drawPileSize: Int
     let hand: [Card]
     let otherPlayers: [String: OtherPlayerState]?
+    let playPile: [Card]
 }
 
 struct Card: Codable, Identifiable {

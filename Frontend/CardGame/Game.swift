@@ -23,6 +23,7 @@ class Game: ObservableObject {
         print("Drawing a card")
         socket.emitDrawCard()
     }
+    
     func refresh(){
         socket.getState()
     }
