@@ -72,6 +72,7 @@
     "stack": "cpp",
     "valarray": "cpp",
     "numeric": "cpp",
-    "ranges": "cpp"
+    "ranges": "cpp",
+    "iostream": "cpp"
   }
 }

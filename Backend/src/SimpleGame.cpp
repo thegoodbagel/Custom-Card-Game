@@ -61,6 +61,25 @@ Card SimpleGame::drawCard(std::string playerID) {
     return card;
 }
 
+
+void SimpleGame::playCard(std::string playerID, std::string cardID) {
+    Player& player = *players[playerID];
+    auto& hand = player.getHand();
+    auto it = std::find_if(hand.begin(), hand.end(), [&](const Card& card) {
+        return card.id == cardID;
+    });
+    if (it != hand.end()) {
+        Card card = *it;
+        player.removeCardFromHand(card);
+        card.location = CardLocation::table;
+        card.face = CardFaceDirection::up;
+        playPile.push_back(card);
+        std::cout << "Player " << playerID << " played card " << cardID << std::endl;
+    } else {
+        std::cerr << "Card " << cardID << " not found in player " << playerID << "'s hand." << std::endl;
+    }
+}
+
 void SimpleGame::addPlayer(std::string playerID) {
     players[playerID] = std::make_unique<Player>(playerID);
 }
