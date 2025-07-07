@@ -73,6 +73,15 @@ class SocketService: ObservableObject {
         print("Connected, emitting drawn card")
         socket.emit("drawCard", [] as [Any])
     }
+    
+    func emitPlayCard(_ card: Card) {
+        guard isConnected else {
+            print("Socket not connected — playCard aborted")
+            return
+        }
+        print("Connected, playing card")
+        socket.emit("playCard", card.id)
+    }
 
     func updateGameState(_ state: GameState) {
         self.state = state

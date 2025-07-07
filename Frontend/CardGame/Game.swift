@@ -24,6 +24,12 @@ class Game: ObservableObject {
         socket.emitDrawCard()
     }
     
+    func playCard(_ card: Card) {
+        guard let index = state?.hand.firstIndex(where: { $0.id == card.id }) else { return }
+        print("Playing a card")
+        socket.emitPlayCard(card)
+    }
+    
     func refresh(){
         socket.getState()
     }
