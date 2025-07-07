@@ -14,7 +14,8 @@ public:
 private:
     void AddPlayer(const Napi::CallbackInfo& info);
     Napi::Value GetState(const Napi::CallbackInfo& info);
-    Napi::Value DrawCard(const Napi::CallbackInfo& info);
+    void DrawCard(const Napi::CallbackInfo& info);
+    void PlayCard(const Napi::CallbackInfo& info);
     SimpleGame game;
 };
 
