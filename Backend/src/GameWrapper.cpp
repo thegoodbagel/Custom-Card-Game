@@ -7,7 +7,8 @@ Napi::Object GameWrapper::Init(Napi::Env env, Napi::Object exports) {
         InstanceMethod("getState", &GameWrapper::GetState),
         InstanceMethod("drawCard", &GameWrapper::DrawCard),
         InstanceMethod("playCard", &GameWrapper::PlayCard),
-        InstanceMethod("addPlayer", &GameWrapper::AddPlayer)
+        InstanceMethod("addPlayer", &GameWrapper::AddPlayer),
+        InstanceMethod("removePlayer", &GameWrapper::RemovePlayer)
     });
     // JS constructor for the GameWrapper class
     exports.Set("newGame", func);
@@ -22,6 +23,11 @@ GameWrapper::GameWrapper(const Napi::CallbackInfo& info)
 void GameWrapper::AddPlayer(const Napi::CallbackInfo& info) {
     std::string id = info[0].As<Napi::String>();
     game.addPlayer(id);
+}
+
+void GameWrapper::RemovePlayer(const Napi::CallbackInfo& info) {
+    std::string id = info[0].As<Napi::String>();
+    game.removePlayer(id);
 }
 
 // One argument: string of player ID (socket ID)

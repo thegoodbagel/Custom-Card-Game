@@ -66,3 +66,7 @@ void SimpleGame::playCard(std::string playerID, std::string cardID) {
 void SimpleGame::addPlayer(std::string playerID) {
     players[playerID] = std::make_unique<Player>(playerID);
 }
+
+void SimpleGame::removePlayer(std::string playerID) {
+    players.erase(playerID);
+}

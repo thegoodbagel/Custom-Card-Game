@@ -27,7 +27,6 @@ io.on("connection", (socket) => {
     console.log(`Player ${socket.id} drew a card`);
     const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));
-    console.log(result);
   });
 
   socket.on("playCard", (cardID) => {
@@ -35,7 +34,6 @@ io.on("connection", (socket) => {
     console.log(`Player ${socket.id} played a card`);
     const result = game.getState(socket.id); // returns JSON string
     socket.emit("getState", JSON.parse(result));
-    console.log(result);
   });
 
   socket.on("getState", () => {
@@ -46,7 +44,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(`Player ${socket.id} disconnected`);
-    // TODO: Remove player from game
+    game.removePlayer(socket.id);
   });
 });
 

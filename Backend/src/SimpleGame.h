@@ -13,6 +13,7 @@ class SimpleGame {
         Card drawCard(std::string playerID);
         void playCard(std::string playerID, std::string cardID);
         void addPlayer(std::string playerID);
+        void removePlayer(std::string playerID);
 
     private:
         std::unordered_map<std::string, std::unique_ptr<Player>> players;
