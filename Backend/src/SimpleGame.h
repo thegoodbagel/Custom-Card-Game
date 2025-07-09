@@ -10,7 +10,7 @@ class SimpleGame {
         SimpleGame();
         std::vector<Standard52Deck> deckType;
         std::string getState(std::string playerID);
-        Card drawCard(std::string playerID);
+        std::optional<Card> drawCard(std::string playerID);
         void playCard(std::string playerID, std::string cardID);
         void addPlayer(std::string playerID);
         void removePlayer(std::string playerID);

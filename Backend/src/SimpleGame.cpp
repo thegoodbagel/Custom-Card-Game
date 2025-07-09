@@ -37,11 +37,13 @@ std::string SimpleGame::getState(std::string playerID) {
     return state.dump();  // JSON as string
 }
 
-Card SimpleGame::drawCard(std::string playerID) {
+std::optional<Card> SimpleGame::drawCard(std::string playerID) {
+    if (drawPile.empty()) return std::nullopt;
+
     Player& player = *players[playerID];
     Card card = drawPile.back();
     drawPile.pop_back();
-    player.addCardToHand(card); 
+    player.addCardToHand(card);
     return card;
 }
 
