@@ -42,7 +42,6 @@ class SocketService: ObservableObject {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: payload)
                     let gameState = try JSONDecoder().decode(GameState.self, from: jsonData)
-                    print("Decoded gameState:", gameState)
                     DispatchQueue.main.async {
                         self?.updateGameState(gameState)
                     }

@@ -38,8 +38,10 @@ std::string SimpleGame::getState(std::string playerID) {
 }
 
 std::optional<Card> SimpleGame::drawCard(std::string playerID) {
-    if (drawPile.empty()) return std::nullopt;
-
+    if (drawPile.empty()){
+        std::cout << "Player drawing from empty pile." << std::endl;
+        return std::nullopt;
+    }
     Player& player = *players[playerID];
     Card card = drawPile.back();
     drawPile.pop_back();
