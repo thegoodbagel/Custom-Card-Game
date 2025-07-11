@@ -9,3 +9,5 @@ Release/
 
 # OS junk
 .DS_Store
+
+/src/generated/prisma
