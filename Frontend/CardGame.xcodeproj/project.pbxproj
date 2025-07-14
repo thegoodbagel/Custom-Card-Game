@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		817B95052E03138F00237E67 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B95042E03138F00237E67 /* GameState.swift */; };
 		819CDA6D2E1C2A8900FC60BB /* CardPileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CDA6C2E1C2A8900FC60BB /* CardPileView.swift */; };
+		819CDA742E2582C000FC60BB /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CDA732E2582C000FC60BB /* MainMenuView.swift */; };
+		819CDA762E25832600FC60BB /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CDA752E25832600FC60BB /* PhotoPicker.swift */; };
 		81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D502E05F55C0009C0CB /* CardStackView.swift */; };
 		81CF9D532E05F5640009C0CB /* CardHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D522E05F5640009C0CB /* CardHandView.swift */; };
 		81CF9D552E09F5CA0009C0CB /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF9D542E09F5CA0009C0CB /* Game.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		817B95042E03138F00237E67 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		819CDA6C2E1C2A8900FC60BB /* CardPileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPileView.swift; sourceTree = "<group>"; };
+		819CDA732E2582C000FC60BB /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		819CDA752E25832600FC60BB /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		81CF9D502E05F55C0009C0CB /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		81CF9D522E05F5640009C0CB /* CardHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHandView.swift; sourceTree = "<group>"; };
 		81CF9D542E09F5CA0009C0CB /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -88,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		819CDA772E25834600FC60BB /* Game Board Elements */ = {
+			isa = PBXGroup;
+			children = (
+				81D4584D2E01C62000881A8F /* CardView.swift */,
+				81CF9D502E05F55C0009C0CB /* CardStackView.swift */,
+				81CF9D522E05F5640009C0CB /* CardHandView.swift */,
+				819CDA6C2E1C2A8900FC60BB /* CardPileView.swift */,
+			);
+			path = "Game Board Elements";
+			sourceTree = "<group>";
+		};
 		81D457FB2E01C4A100881A8F = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +166,10 @@
 		81D458412E01C58200881A8F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				819CDA732E2582C000FC60BB /* MainMenuView.swift */,
+				819CDA752E25832600FC60BB /* PhotoPicker.swift */,
 				81D458422E01C58A00881A8F /* GameView.swift */,
-				81D4584D2E01C62000881A8F /* CardView.swift */,
-				81CF9D502E05F55C0009C0CB /* CardStackView.swift */,
-				81CF9D522E05F5640009C0CB /* CardHandView.swift */,
-				819CDA6C2E1C2A8900FC60BB /* CardPileView.swift */,
+				819CDA772E25834600FC60BB /* Game Board Elements */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +275,8 @@
 			mainGroup = 81D457FB2E01C4A100881A8F;
 			packageReferences = (
 				81D458512E01CF2500881A8F /* XCRemoteSwiftPackageReference "socket" */,
+				819CDA712E21CD7700FC60BB /* XCRemoteSwiftPackageReference "SQLite" */,
+				819CDA722E21CD9100FC60BB /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 81D458052E01C4A100881A8F /* Products */;
 			projectDirPath = "";
@@ -304,6 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819CDA742E2582C000FC60BB /* MainMenuView.swift in Sources */,
+				819CDA762E25832600FC60BB /* PhotoPicker.swift in Sources */,
 				81CF9D512E05F55C0009C0CB /* CardStackView.swift in Sources */,
 				81CF9D552E09F5CA0009C0CB /* Game.swift in Sources */,
 				81D458562E01CF5200881A8F /* SocketManager.swift in Sources */,
@@ -668,6 +686,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		819CDA712E21CD7700FC60BB /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.4;
+			};
+		};
+		819CDA722E21CD9100FC60BB /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		81D458512E01CF2500881A8F /* XCRemoteSwiftPackageReference "socket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/socketio/socket.io-client-swift";

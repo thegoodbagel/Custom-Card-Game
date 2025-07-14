@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./api/auth");
 const deckRoutes = require("./api/decks");
 const addon = require("./build/Release/addon");
+const { PrismaClient } = require("@prisma/client");
 
 const app = express();
 const server = http.createServer(app);
@@ -20,9 +21,7 @@ app.use(express.json()); // for req.body parsing
 app.use("/api/auth", authRoutes);
 app.use("/api/decks", deckRoutes);
 
-const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-module.exports = prisma;
 
 // -- SOCKET.IO LOGIC --
 const game = new addon.newGame();

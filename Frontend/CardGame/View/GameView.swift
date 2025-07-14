@@ -11,50 +11,60 @@ struct GameView: View {
     @StateObject var model = Game()
 
     var body: some View {
-        VStack {
-            Spacer()
-            
-            HStack{
-                Spacer()
-                
-                VStack{
-                                        
-                    // Draw pile (face-down cards)
+        VStack(spacing: 16) {
+            // Title
+            Text("Card Game")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.top)
+
+            Spacer(minLength: 10)
+
+            // Center area: Draw pile and Play pile
+            HStack(alignment: .top, spacing: 40) {
+                // Draw pile and draw button
+                VStack(spacing: 16) {
                     CardStackView(count: model.state?.drawPileSize ?? 0)
-                    
-                    Spacer()
-                    
+
                     Button(action: {
                         model.drawCard()
                         print("Draw Card Button pressed")
                     }) {
                         Text("Draw Card")
-                            .padding()
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
                             .background(Color.blue)
                             .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .cornerRadius(12)
+                            .shadow(radius: 2)
                     }
-                    .padding()
                 }
-                
-                Spacer()
-                
+
                 // Play pile (face-up cards)
                 CardPileView(cards: model.state?.playPile ?? [])
-                
-                Spacer()
             }
-            
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
             Spacer()
-            
-            CardHandView(cards: model.state?.hand ?? []) { card in
-                withAnimation(.easeInOut(duration: 0.4)) {
-                    model.playCard(card)
+
+            // Player's hand
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Your Hand")
+                    .font(.headline)
+                    .padding(.leading)
+
+                CardHandView(cards: model.state?.hand ?? []) { card in
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        model.playCard(card)
+                    }
                 }
             }
+            .padding(.bottom)
+
         }
         .padding()
-        .background(Color.green.opacity(0.2))
+        .background(Color.green.opacity(0.15).ignoresSafeArea())
         .onAppear {
             model.refresh()
         }

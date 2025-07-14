@@ -1,7 +1,8 @@
 const express = require("express");
-const prisma = require("../db/prisma"); // Adjust path as needed
+const { PrismaClient } = require("@prisma/client");
 
 const router = express.Router();
+const prisma = new PrismaClient();
 
 // Save a deck
 router.post("/", async (req, res) => {
